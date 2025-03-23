@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basil Joshua John - Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Arsenica:wght@400&family=Arimo:wght@500&family=Roboto:wght@400&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: white;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Scrollable sections */
+        .container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+        }
+        .container2 {
+            height: 100vh;
+
+        }
+        .container3 {
+            height: 100vh;
+            text-align: left;
+        }
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            z-index: 1000;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+            text-decoration: none;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: rgb(249, 0, 0);
+            background-color: rgb(255, 166, 0);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 10px;
+        }
+
+        /* Home Section */
+        .home {
+            text-align: center;
+            position: relative;
+        }
+
+        .name {
+            font-family: 'Arsenica', serif;
+            font-size: 90.6px;
+            font-weight: normal;
+            animation: subtleMoveFromCorner 6s ease-in-out;
+            position: relative;
+            z-index: 2;
+        }
+
+        .portfolio {
+            font-family: 'Arimo', sans-serif;
+            font-size: 110px;
+            font-weight: 100;
+            animation: subtleMoveFromRight 6s ease-in-out;
+            position: relative;
+            z-index: 2;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: #444;
+            margin-top: 10px;
+            animation: fadeIn 6s ease-in-out;
+        }
+
+        /* Home Image Styling */
+        .home-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-5deg);
+            width: 300px;
+            z-index: 1;
+        }
+
+        .home-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* About Section */
+        .about {
+            flex-direction: column;
+        }
+
+        .title {
+            font-family: 'Arimo', sans-serif;
+            font-size: 109px;
+            font-weight: bold;
+            text-align: left;
+            animation: fadeInUp 2s ease-in-out;
+            width: 100%;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            margin-top: 40px;
+        }
+
+        .text {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 60%;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        /* About Image Styling (Original Position) */
+        .about-image {
+            width: 300px;
+            transform: rotate(-5deg);
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes subtleMoveFromCorner {
+            0% {
+                opacity: 0;
+                transform: translate(-10%, -10%);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(0, 0);
+            }
+        }
+
+        @keyframes subtleMoveFromRight {
+            0% {
+                opacity: 0;
+                transform: translateX(10%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+
+        /* Section Styling */
+        section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 50px;
+            position: relative;
+        }
+
+        /* Sections fade-in animation */
+        .about, .work-experience, .experience, .home, .skills-expertise, .skills, .my-works, .basil, .driven-to-create {
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .about.active, .work-experience.active, .experience.active, .home.active, .skills-expertise.active, .skills.active, .my-works.active, .basil.active, .driven-to-create.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        .title {
+            font-family: 'Arimo', sans-serif;
+            font-size: 109px;
+            font-weight: bold;
+            text-align: left;
+            width: 100%;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            margin-top: 40px;
+        }
+
+        .text {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 60%;
+        }
+
+        /* About Image Styling */
+        .about-image {
+            width: 300px;
+            transform: rotate(-5deg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Experience Section */
+        .experience-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            margin-top: 40px;
+        }
+
+        .experience-column {
+            width: 48%;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .experience-column h2 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .experience-column ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .experience-column ul li {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* skil Section */
+        .skill-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            margin-top: 40px;
+        }
+
+        .skill-column {
+            width: 48%;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .skill-column h2 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .skill-column ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .skill-column ul li {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        /* My Works Section */
+        .works-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 40px;
+        }
+
+        .work-item {
+            width: 30%;
+            text-align: center;
+        }
+
+        .work-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .work-item h2 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .work-item p {
+            font-size: 14px;
+            color: #333;
+            margin-top: 5px;
+        }
+        /* Driven to Create Section */
+        #driven-to-create {
+            text-align: center;
+            position: relative;
+            padding: 50px 0;
+        }
+
+        .text-content h1 {
+            font-family: 'Arimo', sans-serif;
+            font-size: 93.9px;
+            font-weight: bold;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .text-content .driven {
+            font-family: 'Arsenica', serif;
+            font-size: 93.9px;
+            font-style: italic;
+            display: inline-block;
+            margin-left: 30px; /* Moves DRIVEN slightly to the right */
+        }
+
+        .sub-text {
+            font-family: 'TT Commons Pro', sans-serif;
+            font-size: 11.8px;
+            font-weight: 300;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .images {
+            position: relative;
+            width: 100%;
+        }
+
+        .image-left {
+            position: absolute;
+            left: 15%;
+            bottom: -30px;
+            width: 180px;
+            border-radius: 5px;
+        }
+
+        .image-right {
+            position: absolute;
+            right: 15%;
+            top: -40px;
+            width: 150px;
+            border-radius: 5px;
+        }
+/* Work With Me Section */
+        #basil {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            padding: 50px;
+
+        }
+
+        .title {
+            font-family: 'Arimo', sans-serif;
+            font-size: 93.6px;
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .services {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            font-size: 20px;
+            line-height: 1.8;
+        }
+
+        .services li {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .closing {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #555;
+            text-align: left;
+        }
+
+        .contact, .email {
+            font-size: 18px;
+            color: black;
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: left;
+        }
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        /* Default styles for navigation */
+        .nav-links {
+            display: flex;
+            list-style: none;
+}
+
+/* Styles for small screens */
+
+        /* Medium Screens (Tablets) */
+        @media screen and (max-width: 1024px) {
+            body {
+                font-size: 16px;
+            }
+            .title {
+                font-size: 80px;
+            }
+            .portfolio {
+                font-size: 90px;
+            }
+            .name {
+                font-size: 70px;
+            }
+            .home-image img, .about-image img, .image-left, .image-right { 
+                width: 70%;
+            }
+        }
+
+        /* Small Screens (Mobile) */
+        @media screen and (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+            .title {
+                font-size: 50px;
+                text-align: center;
+            }
+            .portfolio {
+                font-size: 60px;
+            }
+            .name {
+                font-size: 50px;
+            }
+            .subtitle {
+                font-size: 16px;
+            }
+            .text {
+                font-size: 14px;
+            }
+            .experience-column h2,
+            .skill-column h2,
+            .work-item h2 {
+                font-size: 18px;
+            }
+            .home-image img, .about-image img {
+                width: 60%;
+                margin: auto;
+            }
+            .image-left, .image-right {
+                width: 50%;
+                position: static; /* Remove absolute positioning */
+                margin: 10px auto;
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: white;
+                width: 100%;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        
+
+        /* Extra Small Screens (Phones) */
+        @media screen and (max-width: 480px) {
+            body {
+                font-size: 12px;
+            }
+            .title {
+                font-size: 40px;
+            }
+            .portfolio {
+                font-size: 50px;
+            }
+            .name {
+                font-size: 40px;
+            }
+            .subtitle {
+                font-size: 14px;
+            }
+            .text {
+                font-size: 12px;
+            }
+            .experience-column h2,
+            .skill-column h2,
+            .work-item h2 {
+                font-size: 16px;
+            }
+            .home-image img, .about-image img {
+                width: 50%;
+            }
+
+            .image-left, .image-right {
+                width: 40%;
+            }
+        }
+
+
+
+ 
+    </style>
+
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">My Portfolio</div>
+        <button class="hamburger">&#9776;</button>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#my-works">Works</a></li>
+            <li><a href="#basil">Work With Me</a></li>
+        </ul>
+    </nav>
+        <!-- Home Section -->
+        <section id="home" class="home">
+            <h1 class="name">Basil Joshua John</h1>
+            <div class="home-image">
+            <img src="img/your-image.png" alt="Basil Joshua John">
+            </div>
+            <h2 class="portfolio">PORTFOLIO</h2>
+            <p class="subtitle">Python & Web Developer</p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <h1 class="title">A LITTLE <br> ABOUT ME</h1>
+            <div class="content">
+                <div class="text">
+                    <p>Hey there! I'm Basil, a passionate developer, AI enthusiast, and problem solver. I love building innovative solutions, especially in web & app development, AI-driven projects, and automation.</p>
+                    <p>Currently, I’m working on Swastha AI, an AI-powered EdTech platform aimed at helping students with personalized learning solutions.</p>
+                    <p>I enjoy taking up challenging projects that push me to learn and experiment with new technologies. From AI-integrated web applications to library management robots, I strive to blend intelligence with real-world usability.</p>
+                </div>
+                <div class="about-image">
+                <img src="img/your-image.png"alt="Basil Joshua John">
+                </div>
+            </div>
+        </section>
+        
+        <section id="experience" class="work-experience">
+            <h1 class="title">WORK EXPERIENCE</h1>
+            <div class="experience-content">
+                <div class="experience-column">
+                    <h2>Creator of Swastha AI <br> <span style="font-weight: normal;">(In Development)</span></h2>
+                    <ul>
+                        <li>Developing an AI-powered educational concept for personalized learning.</li>
+                        <li>Exploring AI for automated syllabus updates and intelligent tutoring.</li>
+                    </ul>
+                </div>
+                <div class="experience-column">
+                    <h2>Freelance Work</h2>
+                    <ul>
+                        <li>Built and deployed Flask-based web applications with MySQL integration.</li>
+                        <li>Developed an AI-integrated summary generator and a library management system.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-content">
+                <div class="experience-column">
+                    <h2>Electronics & Mechanical Enthusiast</h2>
+                    <ul>
+                        <li>Working on a library management robot for book guidance and tracking.</li>
+                        <li>Exploring custom hardware integration for AI-driven automation.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- Skills Section -->
+        <section id="skills" class="skills-expertise">
+            <h1 class="title">SKILLS & EXPERTISE</h1>
+            <div class="skill-content">
+                <div class="skill-column">
+                    <h2>Programming Languages</h2>
+                    <ul>
+                        <li>Python</li>
+                        <li>JavaScript</li>
+                        <li>HTML & CSS</li>
+                    </ul>
+                </div>
+                <div class="skill-column">
+                    <h2>AI & Machine Learning</h2>
+                    <ul>
+                        <li>Prompt Engineering</li>
+                        <li>OpenAI APIs</li>
+                        <li>Gemini APIs</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="skill-content">
+                <div class="skill-column">
+                    <h2>Frameworks & Tools</h2>
+                    <ul>
+                        <li>Flask</li>
+                        <li>MySQL</li>
+                        <li>Kivy</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="my-works" class="my-works">
+        
+            <h1 class="title">MY WORKS</h1>
+    
+            <div class="works-content">
+                <div class="work-item">
+                    <img src="img/img1.png" alt="Library Management System">
+                    <h2>Library Management System</h2>
+                    <p>A software solution with AI integration for tracking books, managing lending/returns, and offering automated summaries and book availability status.</p>
+                </div>
+    
+                <div class="work-item">
+                    <img src="img/img2.png" alt="AI-Powered Student Book Guide">
+                    <h2>AI-Powered Student Book Guide</h2>
+                    <p>An AI-based system that suggests books, provides summaries, and assists students in choosing study materials based on their syllabus and interests.</p>
+                </div>
+    
+                <div class="work-item">
+                    <img src="img/img3.png" alt="WhatsApp Bot & Library Management Robot">
+                    <h2>WhatsApp Bot & Library Management Robot (In Development)</h2>
+                    <p> A chatbot for managing library queries via WhatsApp and a physical robot to guide users in locating books and providing summaries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="driven-to-create" class="container2">
+            <div class="text-content">
+                <h1>
+                I WAS <br> 
+                <span class="driven">DRIVEN</span>  
+                <br> TO CREATE
+                </h1>
+                <p class="sub-text">
+                    I BELIEVE IN INNOVATION, AUTOMATION, AND REAL-WORLD IMPACT.
+                </p>
+            </div>
+            <div class="images">
+                <img src="img/grphic.png" alt="Working on computer" class="image-left">
+            </div>
+        </div>
+    </section>
+    <section id="basil">
+        <h1 class="title">WORK <br> WITH ME</h1>
+        <p.>
+            I’m always excited to collaborate on AI-driven, automation-based, or web development projects! Whether it's:
+        </p>
+        <ul class="services">
+            <li>✔ AI model development</li>
+            <li>✔ Web & app development</li>
+            <li>✔ Robotics & automation</li>
+            <li>✔ AI-powered education solutions</li>
+        </ul>
+        <p class="closing">Let’s connect and create something impactful!</p>
+        <p class="contact">+91 94000 90246</p>
+        <p class="email">basiljoshuajohnjj@gmail.com</p>
+    </section>
+    
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Select all target sections correctly
+            const sections = document.querySelectorAll(".about, .work-experience, .experience ,.home,.skills-expertise,.skills,.my-works ,.basil,.driven-to-create");
+    
+            // Observer to detect when sections enter the viewport
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                    } else {
+                        entry.target.classList.remove("active"); // Remove animation when scrolling out
+                    }
+                });
+            }, { threshold: 0.3 });
+    
+            // Observe each section
+            sections.forEach(section => observer.observe(section));
+        });
+        document.querySelector(".hamburger").addEventListener("click", function() {
+            document.querySelector(".nav-links").classList.toggle("active");
+        });
+    </script>
+    
+</head>
+</body>
+</html>
